@@ -58,4 +58,37 @@ let getDate = function (days) {
                 `<p class="wind_speed">Wind Speed:  ${mph(
                   result.list[0].wind.speed
                 )} MPH</p>`
-              );  
+              ); 
+              $.ajax({
+                url:
+                  `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=` +
+                  result.city.coord.lat +
+                  "&lon=" +
+                  result.city.coord.lon,
+                success: function (result) {
+                  $("#today").append(
+                    `<p class="uv">UV Index: <span>${result.value}</span></p>`
+                  );
+                },
+              });
+  
+              $("#forecast .fiveDays").html("");
+              for (let i = 1; i <= 5; i++) {
+                let forecast5 = function (i) {
+                  return (
+                    '<div class="bg-primary">' +
+                    '<p class="date">' +
+                    getDate(i) +
+                    "</p>" +
+                    `<img src="https://openweathermap.org/img/w/${result.list[i].weather[0].icon}.png" alt="${result.list[i].weather[0].description}" "width='50' height='50'>` +
+                    `<p class="temperature">Temp: ${result.list[i].main.temp}&nbsp;°F</p>` +
+                    `<p class="humidity">Humidity: ${result.list[i].main.humidity}&nbsp;%"</p>` +
+                    "</div>"
+                  );
+                };
+  
+                $("#forecast .fiveDays").append(forecast5(i));
+              }
+            },
+          });
+        }, 
