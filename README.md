@@ -26,3 +26,16 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
+
+## Deployed Application 
+
+https://collin-hodgson.github.io/weatherdashboard/
+
+## Screenshot of deployed application 
+
+<img width="944" alt="Capture" src="https://user-images.githubusercontent.com/64516562/85945068-799db400-b8f8-11ea-93db-269321ab22ef.PNG">
+
+## Application Description
+
+With this website you can see weather for basically any place on the earth.  It gives you 8 main cities in the US and a search bar to search any other city in the world.  Includes a 5 day forcast for any area you are looking at.  Forcast also includes temperature in fahrenheit, humidity, wind speed, and UV Index. The UV Index will change color to red if it is bad that day or orange if it is medium and green if it is good.
+
