@@ -38,7 +38,7 @@ h1 {
 .uv span {
   border-radius: 5px;
   padding: 5px;
-  font-weight: bold;
+  color: white;
 }
 
 #forecast .fiveDays div {

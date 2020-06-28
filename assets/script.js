@@ -40,7 +40,8 @@ $(document).ready(function () {
           success: function (result) {
             $("#today").html("");
             $("#today").append(
-              `<div class="blockHeading"><h2>${result.city.name} ( ${getDate(0
+              `<div class="blockHeading"><h2>${result.city.name} ( ${getDate(
+                0
               )} )</h2><img src="https://openweathermap.org/img/w/${
                 result.list[0].weather[0].icon
               }.png" alt="${
@@ -66,8 +67,15 @@ $(document).ready(function () {
                 result.city.coord.lon,
               success: function (result) {
                 $("#today").append(
-                  `<p class="uv">UV Index: <span>${result.value}</span></p>`
+                  `<p class="uv">UV Index: <span id="resultValue">${result.value}</span></p>`
                 );
+                if (result.value > 7) {
+                  $(resultValue).css({ "background-color": "red" });
+                } else if (result.value < 2) {
+                  $(resultValue).css({ "background-color": "green" });
+                } else {
+                  $(resultValue).css({ "background-color": "orange" });
+                }
               },
             });
 
