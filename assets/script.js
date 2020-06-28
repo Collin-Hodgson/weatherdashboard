@@ -8,3 +8,15 @@ let searchedCities = [];
 if (localStorage.getItem("citySearch")) {
   searchedCities = JSON.parse(localStorage.getItem("citySearch"));
 }
+
+let getDate = function (days) {
+    let someDate = new Date();
+    let numberOfDaysToAdd = days;
+    someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+  
+    let dd = someDate.getDate();
+    let mm = someDate.getMonth() + 1;
+    let y = someDate.getFullYear();
+  
+    return mm + " / " + dd + " / " + y;
+  };
