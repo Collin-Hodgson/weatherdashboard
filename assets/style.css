@@ -19,3 +19,73 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+#today {
+    margin:20px;
+    padding:20px;
+    border-radius:3px;
+    border: 1px solid black;
+    font-size: 14px;
+  }
+
+  .mainCityLabel {
+    display:flex;
+  }
+
+  #forecast .fiveDays div {
+    padding:5px;
+    border-radius:10px;
+    margin:5px;
+    text-align:center;
+  }
+
+  #citySearch {
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  #search {
+    display:flex;
+    margin-left:5px;
+  }
+
+  #search input {
+    border: 1px solid darkslategrey;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius:5px;
+    width: 80%;
+  }
+  
+  #search button {
+    background-color: lightgray;
+    cursor: pointer;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border: 0px solid transparent;
+  }
+  
+  #sampleSearches { 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 5px 20px 5px;
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  #sampleSearches button { 
+    border: 0.25px solid black;
+    padding: 20px;
+    background-color: white;
+    font-size: 14px;
+  }
+  
+  #searchError{
+    height:18px;
+    margin-left: 5px;
+    color:red;
+  }
