@@ -8,6 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/style.css" />
 
     <!-- Bootstrap CSS -->
@@ -19,7 +20,7 @@
     />
   </head>
   <body>
-    <header id="banner">
+    <header id="banner" class="bg-dark">
       <h1>Weather Dashboard</h1>
     </header>
 
@@ -29,8 +30,10 @@
         <div id="search">
           <input type="text" name="searchText" /><button
             id="searchIcon"
-            class="fa fa-search"
-          ></button>
+            class="bg-primary"
+          >
+            <i class="fa fa-search"></i>
+          </button>
           <datalist id="searchHistory"></datalist>
         </div>
 
@@ -61,8 +64,8 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
     <script
