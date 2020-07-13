@@ -12,10 +12,14 @@ searchBTN.addEventListener('click',function(event){
   }).then(function(data){
     // console.log(data.weather[0].description);
    var todayContainer = document.getElementById("today");
-  var h1El = document.createElement('h1');
+  var title = document.createElement('h2'); 
+  var date = document.createElement('h2');
   // 
-  h1El.value=data.name;
-  todayContainer.appendChild(h1El);
+ title.innerText=data.name;
+ date.innerText=new Date(data.dt*1000);
+
+  todayContainer.appendChild(title);
+  todayContainer.appendChild(date);
 
   })
 });
