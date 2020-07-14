@@ -40,7 +40,12 @@ h1 {
   padding: 5px;
   color: white;
 }
-
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
 #forecast .fiveDays div {
   padding: 5px;
   color: white;
