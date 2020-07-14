@@ -10,7 +10,7 @@ var cities = JSON.parse(localStorage.getItem("cities")) || [];
 var searchBTN = document.getElementById("searchIcon");
 var todayContainer = document.getElementById("today");
 
-searchBTN.addEventListener("click", function (event) {
+searchBTN.addEventListener("click", function (_event) {
   var userInput = document.getElementById("searchText").value;
   cities.push(userInput);
   localStorage.setItem("cities", JSON.stringify(cities));
@@ -25,7 +25,7 @@ searchBTN.addEventListener("click", function (event) {
 });
 function displayCurrentWeather(data) {
   todayContainer.innerHTML = "";
-  var title = document.createElement("h2");
+  var title = document.createElement("div" + "h2" + "img");
   var date = document.createElement("h2");
 
   title.innerText = data.name;
@@ -48,9 +48,9 @@ function getUVIndex(lon, lat) {
       if (UV >= 10) {
         uvEl.classList.add("red");
       } else if (UV >= 7 && UV < 10) {
-        uvEl.classList.add("pink");
+        uvEl.classList.add("orange");
       } else {
-        uvEl.classList.add("yellow");
+        uvEl.classList.add("green");
       }
 
       uvEl.innerText = "UV index : " + UV;

@@ -43,8 +43,11 @@ h1 {
 .red {
   background-color: red;
 }
-.yellow {
-  background-color: yellow;
+.orange {
+  background-color: orange;
+}
+.green {
+  background-color: green;
 }
 #forecast .fiveDays div {
   padding: 5px;
