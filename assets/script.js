@@ -9,52 +9,43 @@ var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 var searchBTN = document.getElementById("searchIcon");
 var todayContainer = document.getElementById("today");
+function displayCurrentWeather(data) {
+  $("#today").append(
+    "<h2>" +
+      data["name"] +
+      "</h2>" +
+      "<p>Temperature: " +
+      data["main"]["temp"] / 10 +
+      " F</p>" +
+      "<p>Humidity: " +
+      data["main"]["humidity"] +
+      "</p>" +
+      "<p>Wind Speed: " +
+      data["wind"]["speed"] +
+      "MPH </p>"
+  );
+}
 
+function displayUV(data) {
+  $("#today").append("<p>UV: " + test + "</p>");
+}
 searchBTN.addEventListener("click", function (_event) {
   var userInput = document.getElementById("searchText").value;
-  cities.push(userInput);
-  localStorage.setItem("cities", JSON.stringify(cities));
+  //cities.push(userInput);
+  //localStorage.setItem("cities", JSON.stringify(cities));
   fetch(currentURL + `&q=${userInput}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       displayCurrentWeather(data);
-      displayFiveDayForecast(userInput);
+      //displayFiveDayForecast(userInput);
     });
-});
-function displayCurrentWeather(data) {
-  todayContainer.innerHTML = "";
-  var title = document.createElement("div" + "h2" + "img");
-  var date = document.createElement("h2");
-
-  title.innerText = data.name;
-  date.innerText = new Date(data.dt * 1000);
-
-  todayContainer.appendChild(title);
-  todayContainer.appendChild(date);
-
-  getUVIndex(data.coord.lon, data.coord.lat);
-}
-function getUVIndex(lon, lat) {
-  fetch(uvIndex + "&lat=" + lat + "&lon=" + lon)
+  fetch(uvIndex)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      const UV = data.value;
-      var uvEl = document.createElement("p");
-
-      if (UV >= 10) {
-        uvEl.classList.add("red");
-      } else if (UV >= 7 && UV < 10) {
-        uvEl.classList.add("orange");
-      } else {
-        uvEl.classList.add("green");
-      }
-
-      uvEl.innerText = "UV index : " + UV;
-      todayContainer.appendChild(uvEl);
+      displayUV(data);
     });
-}
-function displayFiveDayForecast(city) {}
+});
