@@ -15,9 +15,11 @@ body {
 }
 
 .days {
-  border: 1px solid black;
-  color: white !important;
-  background-color: blue;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
+  margin: 5px;
+  text-align: center;
 }
 
 h1 {
@@ -41,26 +43,23 @@ h1 {
   display: flex;
 }
 
-.uv span {
+.highUV {
+  background-color: red;
   border-radius: 5px;
   padding: 5px;
   color: white;
 }
-.highUV {
-  background-color: red;
-}
 .midUV {
   background-color: orange;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
 }
 .lowUV {
   background-color: green;
-}
-#forecast .fiveDays div {
+  border-radius: 5px;
   padding: 5px;
   color: white;
-  border-radius: 10px;
-  margin: 5px;
-  text-align: center;
 }
 
 #citySearch {

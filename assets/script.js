@@ -1,9 +1,13 @@
 var apiKey = "86c2386f7cd01320261c251552adbfb4";
 var currentURL =
-  "https://api.openweathermap.org/data/2.5/weather?appid=" + apiKey;
+  "https://api.openweathermap.org/data/2.5/weather?appid=" +
+  apiKey +
+  "&units=imperial";
 var uvIndex = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey;
 var fiveDayURL =
-  "https://api.openweathermap.org/data/2.5/forecast?appid=" + apiKey;
+  "https://api.openweathermap.org/data/2.5/forecast?appid=" +
+  apiKey +
+  "&units=imperial";
 
 var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
@@ -26,7 +30,7 @@ function displayCurrentWeather(data) {
       data["name"] +
       "</h2>" +
       "<p>Temperature: " +
-      data["main"]["temp"] / 10 +
+      data["main"]["temp"] +
       " F </p>" +
       "<p>Humidity: " +
       data["main"]["humidity"] +
@@ -60,16 +64,13 @@ function displayFiveDay(data) {
   console.log(data);
   for (let i = 0; i < 5; i++) {
     $("#fiveDays").append(
-      "<div class='days'>" +
+      "<div class='days bg-primary'>" +
         "<p>Temperature: " +
-        data["list"][i]["main"]["temp"] / 10 +
+        data["list"][i]["main"]["temp"] +
         " F </p>" +
         "<p>Humidity: " +
         data["list"][i]["main"]["humidity"] +
         " % </p>" +
-        "<p>Wind Speed: " +
-        data["list"][i]["wind"]["speed"] +
-        " MPH </p>" +
         "</div>"
     );
   }
