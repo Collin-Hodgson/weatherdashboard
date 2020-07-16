@@ -8,6 +8,17 @@ var fiveDayURL =
   "https://api.openweathermap.org/data/2.5/forecast?appid=" +
   apiKey +
   "&units=imperial";
+let getDate = function (days) {
+  let someDate = new Date();
+  let numberOfDaysToAdd = days;
+  someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+
+  let dd = someDate.getDate();
+  let mm = someDate.getMonth() + 1;
+  let y = someDate.getFullYear();
+
+  return mm + " / " + dd + " / " + y;
+};
 
 var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
@@ -16,8 +27,8 @@ var todayContainer = document.getElementById("today");
 function displayCurrentWeather(data) {
   $("#today").html("");
   console.log(data);
-  let lat = data["coord"]["lat"];
-  let lon = data["coord"]["lon"];
+  let lat = data.coord.lat;
+  let lon = data.coord.lon;
   fetch(uvIndex + `&lat=${lat}&lon=${lon}`)
     .then(function (response) {
       return response.json();
@@ -27,16 +38,18 @@ function displayCurrentWeather(data) {
     });
   $("#today").append(
     "<h2>" +
-      data["name"] +
+      data.name +
+      getDate(0) +
+      `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">` +
       "</h2>" +
       "<p>Temperature: " +
-      data["main"]["temp"] +
+      data.main.temp +
       " F </p>" +
       "<p>Humidity: " +
-      data["main"]["humidity"] +
+      data.main.humidity +
       " % </p>" +
       "<p>Wind Speed: " +
-      data["wind"]["speed"] +
+      data.wind.speed +
       " MPH </p>"
   );
 }
@@ -44,17 +57,17 @@ function displayCurrentWeather(data) {
 function displayUV(data) {
   console.log(data);
 
-  if (data["value"] < 5) {
+  if (data.value < 3) {
     $("#today").append(
-      "<p>UV: <span class='lowUV'>" + data["value"] + "</span></p>"
+      "<p>UV: <span class='lowUV'>" + data.value + "</span></p>"
     );
-  } else if (data["value"] < 10) {
+  } else if (data.value < 8) {
     $("#today").append(
-      "<p>UV: <span class='midUV'>" + data["value"] + "</span></p>"
+      "<p>UV: <span class='midUV'>" + data.value + "</span></p>"
     );
   } else {
     $("#today").append(
-      "<p>UV: <span class='highUV'>" + data["value"] + "</span></p>"
+      "<p>UV: <span class='highUV'>" + data.value + "</span></p>"
     );
   }
 }
@@ -65,11 +78,15 @@ function displayFiveDay(data) {
   for (let i = 0; i < 5; i++) {
     $("#fiveDays").append(
       "<div class='days bg-primary'>" +
+        "<h3>" +
+        getDate(i) +
+        "</h3>" +
+        `<img src="https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">` +
         "<p>Temperature: " +
-        data["list"][i]["main"]["temp"] +
+        data.list[i].main.temp +
         " F </p>" +
         "<p>Humidity: " +
-        data["list"][i]["main"]["humidity"] +
+        data.list[i].main.humidity +
         " % </p>" +
         "</div>"
     );
