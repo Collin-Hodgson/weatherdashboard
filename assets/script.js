@@ -8,6 +8,7 @@ var fiveDayURL =
   "https://api.openweathermap.org/data/2.5/forecast?appid=" +
   apiKey +
   "&units=imperial";
+
 let getDate = function (days) {
   let someDate = new Date();
   let numberOfDaysToAdd = days;
