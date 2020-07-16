@@ -20,6 +20,15 @@ let getDate = function (days) {
   return mm + " / " + dd + " / " + y;
 };
 
+var austin = document.getElementById("austin");
+var chicago = document.getElementById("chicago");
+var newYork = document.getElementById("newYork");
+var orlando = document.getElementById("orlando");
+var sanFran = document.getElementById("sanFran");
+var seattle = document.getElementById("seattle");
+var denver = document.getElementById("denver");
+var atlanta = document.getElementById("atlanta");
+
 var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 var searchBTN = document.getElementById("searchIcon");
@@ -92,7 +101,7 @@ function displayFiveDay(data) {
     );
   }
 }
-searchBTN.addEventListener("click", function (_event) {
+searchBTN.addEventListener("click", function weather(event) {
   var userInput = document.getElementById("searchText").value;
   //cities.push(userInput);
   //localStorage.setItem("cities", JSON.stringify(cities));

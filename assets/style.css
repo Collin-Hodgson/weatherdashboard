@@ -90,24 +90,18 @@ i {
   color: white;
 }
 
-#sampleSearches {
+#quickSearch {
   display: flex;
   flex-direction: column;
   margin: 20px 5px 20px 5px;
   background-color: white;
 }
 
-#sampleSearches button {
+#quickSearch button {
   padding: 20px;
   background-color: white;
   font-size: 15px;
   text-align: left;
-}
-
-#searchError {
-  height: 18px;
-  margin-left: 5px;
-  color: red;
 }
 
 @media only screen and (min-width: 768px) {
